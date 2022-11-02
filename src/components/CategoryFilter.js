@@ -1,21 +1,23 @@
 import React from 'react'
 import { useState } from 'react'
 
-function CategoryFilter({ taskData, setCategory }) {
-
+function CategoryFilter({ taskData, filterCategory, setCategory }) {
   const categoryItems = taskData.CATEGORIES.map((category) => {
     let isToggled = false
+    const className = category === filterCategory ? 'selected' : ''
     return (
       <button
         key={category}
-        onClick={((e) => {
+        className={className}
+        onClick={() => {
           if (!isToggled) {
             isToggled = !isToggled
             setCategory(category)
-            e.target.className = (!isToggled ? '' : 'selected')
           }
-        })}
-      >{category}</button>
+        }}
+      >
+        {category}
+      </button>
     )
   })
   return (
