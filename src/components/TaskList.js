@@ -4,11 +4,9 @@ import Task from './Task'
 
 function TaskList({ taskData, filterCategory }) {
 
-  console.log(filterCategory)
-
   const taskItems = taskData.TASKS.map((task, index) => {
     if (task.category.includes(filterCategory) || filterCategory === "All") {
-      return <Task key={index} task={task} />
+      return <Task key={index} taskCategory={task.category} taskText={task.text}/>
     }
   })
 
