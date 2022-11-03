@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 
 function CategoryFilter({ taskData, filterCategory, setCategory }) {
   const categoryItems = taskData.CATEGORIES.map((category) => {

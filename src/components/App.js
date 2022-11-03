@@ -13,8 +13,6 @@ const taskData ={ CATEGORIES, TASKS }
 function App() {
   const [ filterCategory, setCategory ] = useState('All')
 
-    // console.log(filterCategory)
-
   return (
     <div className="App">
       <h2>My tasks</h2>
