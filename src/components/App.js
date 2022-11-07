@@ -9,36 +9,48 @@ import { CATEGORIES, TASKS } from '../data'
 console.log("Here's the data you're working with")
 console.log({ CATEGORIES, TASKS })
 
-const taskData = { CATEGORIES, TASKS }
+// const taskData = { CATEGORIES, TASKS }
 
 function App() {
+  const [currentTasks, setTasks] = useState(TASKS)
   const [filterCategory, setCategory] = useState('All')
   const [detailsInput, setDetailsInput] = useState('')
-  const [categoryInput, setCategoryInput] = useState('')
+  const [categoryInput, setCategoryInput] = useState('Code')
 
-  const submitHandler = (e) => {
+  const onTaskFormSubmit = (e) => {
     e.preventDefault()
     console.log(categoryInput)
-    return <Task taskCategory={categoryInput} taskText={detailsInput}></Task>
+    const newItem = {
+      text: detailsInput,
+      category: categoryInput,
+    }
+    setTasks([...TASKS, newItem])
+
+    
   }
 
   return (
     <div className='App'>
       <h2>My tasks</h2>
       <CategoryFilter
-        taskData={taskData}
+        tasks={currentTasks}
+        categories={CATEGORIES}
         filterCategory={filterCategory}
         setCategory={setCategory}
       />
       <NewTaskForm
-        taskData={taskData}
+        tasks={currentTasks}
+        categories={CATEGORIES}
         setDetailsInput={setDetailsInput}
         setCategoryInput={setCategoryInput}
-        submitHandler={submitHandler}
+        onTaskFormSubmit={onTaskFormSubmit}
+        detailsInput={detailsInput}
+        categoryInput={categoryInput}
       />
       <TaskList
         filterCategory={filterCategory}
-        taskData={taskData}
+        tasks={currentTasks}
+        categories={CATEGORIES}
         details={detailsInput}
         categoryInput={categoryInput}
       />

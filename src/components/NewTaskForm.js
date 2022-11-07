@@ -1,12 +1,15 @@
 import React from 'react'
 
 function NewTaskForm({
-  taskData,
+  categories,
+  tasks,
   setDetailsInput,
   setCategoryInput,
-  submitHandler,
+  onTaskFormSubmit,
+  detailsInput,
+  categoryInput
 }) {
-  const categoryOptions = taskData.CATEGORIES.map((category) => {
+  const categoryOptions = categories.map((category) => {
     if (category !== 'All') {
       return (
         <option value={category} key={category}>
@@ -16,7 +19,7 @@ function NewTaskForm({
     }
   })
   return (
-    <form onSubmit={submitHandler} className='new-task-form'>
+    <form onSubmit={onTaskFormSubmit} className='new-task-form'>
       <label>
         Details
         <input
@@ -25,6 +28,7 @@ function NewTaskForm({
           onChange={(e) => {
             setDetailsInput(e.target.value)
           }}
+          value={detailsInput}
         />
       </label>
       <label>
@@ -34,6 +38,7 @@ function NewTaskForm({
           onChange={(e) => {
             setCategoryInput(e.target.value)
           }}
+          value={categoryInput}
         >
           {categoryOptions}
         </select>

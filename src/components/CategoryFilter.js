@@ -1,7 +1,7 @@
 import React from 'react'
 
-function CategoryFilter({ taskData, filterCategory, setCategory }) {
-  const categoryItems = taskData.CATEGORIES.map((category) => {
+function CategoryFilter({ categories, filterCategory, setCategory }) {
+  const categoryItems = categories.map((category) => {
     let isToggled = false
     const className = category === filterCategory ? 'selected' : ''
     return (

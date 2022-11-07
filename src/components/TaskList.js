@@ -2,11 +2,12 @@ import React from 'react'
 // import { TASKS } from "../data";
 import Task from './Task'
 
-function TaskList({ taskData, filterCategory }) {
+function TaskList({ tasks, filterCategory }) {
 
-  const taskItems = taskData.TASKS.map((task, index) => {
+  console.log(tasks)
+  const taskItems = tasks.map((task) => {
     if (task.category.includes(filterCategory) || filterCategory === "All") {
-      return <Task key={index} taskCategory={task.category} taskText={task.text}/>
+      return <Task key={task.text} taskCategory={task.category} taskText={task.text}/>
     }
   })
 
