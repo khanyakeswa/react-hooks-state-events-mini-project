@@ -24,9 +24,9 @@ function App() {
       text: detailsInput,
       category: categoryInput,
     }
-    setTasks([...TASKS, newItem])
-
-    
+    setTasks([...currentTasks, newItem])
+    setDetailsInput('')
+    setCategoryInput('Code')
   }
 
   return (
